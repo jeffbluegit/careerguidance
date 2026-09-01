@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth Screens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}" />
+  </head>
+  <body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="auth-card">
+      <section class="brand-panel">
+        <div class="brand-mark">A</div>
+        <h1>Welcome back</h1>
+        <p>Access your workspace and continue where you left off.</p>
+        
+      </section>
+
+      <section class="form-panel">
+        {% if messages %}
+          {% for message in messages %}
+            <p class="message">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+
+        <div class="tabs" role="tablist" aria-label="Authentication toggle">
+          <button class="tab active" data-target="login" role="tab" aria-selected="true">
+            Login
+          </button>
+          <button class="tab" data-target="register" role="tab" aria-selected="false">
+            Register
+          </button>
+        </div>
+
+        <form id="login-form" class="auth-form active" method="post" action="{% url 'registration' %}">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="login" />
+          <h2>Sign in</h2>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="Enter password" required />
+          </label>
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit">Login</button>
+        </form>
+
+        <form id="register-form" class="auth-form" method="post" action="{% url 'registration' %}">
+          {% csrf_token %}
+          <input type="hidden" name="action" value="register" />
+          <h2>Create account</h2>
+          <label>
+            Full name
+            <input type="text" name="full_name" placeholder="Alex Morgan" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="Create a password" required />
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" required />
+            <span>I agree to the terms</span>
+          </label>
+          <button type="submit">Register</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="{% static 'myapp/script.js' %}"></script>
+  </body>
+</html>

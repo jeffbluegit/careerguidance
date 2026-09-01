@@ -1,0 +1,423 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compass — Student List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'myapp/student.css'%}">
+<style>
+  
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#E8EFE9" stroke-opacity="0.35" stroke-width="1"/>
+        <circle cx="20" cy="20" r="12.5" stroke="#E8EFE9" stroke-opacity="0.55" stroke-width="1"/>
+        <circle cx="20" cy="20" r="7" fill="#C79A44"/>
+      </svg>
+      <div>
+        <div class="brand-name">Compass</div>
+        <div class="brand-sub">Guidance &amp; Counselling</div>
+      </div>
+    </div>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <div class="nav-label">Overview</div>
+      <a class="nav-item" href="{% url 'dashboard' %}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard
+      </a>
+      <a class="nav-item active" href="students.html">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.4"/><path d="M15.5 14.2c2.6.4 4.5 2.6 4.5 5.3"/></svg>
+        Students
+      </a>
+      <a class="nav-item" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="16" rx="2"/><path d="M3.5 9.5h17M8 3v3M16 3v3"/></svg>
+        Appointments
+      </a>
+      <a class="nav-item" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h9l3.5 3.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M8.5 12h6M8.5 15.5h6"/></svg>
+        Case Notes
+      </a>
+      <a class="nav-item" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h6l2-3 2 6 2-3h4"/><circle cx="12" cy="12" r="9"/></svg>
+        Referrals
+      </a>
+
+      <div class="nav-label">Resources</div>
+      <a class="nav-item" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5V6a2 2 0 0 1 2-2h11.5a1 1 0 0 1 1 1v14"/><path d="M4 19.5A2 2 0 0 0 6 21h12.5a1 1 0 0 0 1-1v-.5"/></svg>
+        Resource Library
+      </a>
+      <a class="nav-item" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg>
+        Reports
+      </a>
+      <a class="nav-item" href="#">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14.2 3H9.8l-.4 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9c.6.5 1.3.9 2 1.2l.4 2.6h4.4l.4-2.6c.7-.3 1.4-.7 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2Z"/></svg>
+        Settings
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="avatar">MT</div>
+      <div class="who">
+        <div class="name">Ms. Tallent</div>
+        <div class="role">Lead School Counselor</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Fall Term, Week 7 · <span>642 students on roll</span></div>
+        <h1>Student List</h1>
+      </div>
+      <div class="topbar-actions">
+        <div class="search">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search by name or ID…">
+        </div>
+        <button class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
+          <a href="{% url 'addstudents' %}">Add Student</a>
+        </button>
+      </div>
+    </div>
+    <section class="stats">      
+      <div class="stat-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:#EAF3EC;color:var(--sage-deep);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.4"/><path d="M15.5 14.2c2.6.4 4.5 2.6 4.5 5.3"/></svg>
+          </div>
+        </div>
+        <div class="stat-label">Students Enrolled</div>
+        <div class="stat-value">642</div>
+        <div class="stat-trend trend-up">↑ 3.1% vs last interval</div>
+      </div>
+      
+    </section>
+
+    <section class="statis">
+      <div class="statis-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:#EAF1FB;color:var(--slate);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h9l3.5 3.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M8.5 12h6M8.5 15.5h6"/></svg>
+          </div>
+        </div>
+        <div class="stat-label">Lower Grades</div>
+        
+      </div>
+
+      <div class="statis-card">
+        <div class="stat-top">
+          <div class="stat-icon" style="background:#EAF1FB;color:var(--slate);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3.5h9l3.5 3.5V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M8.5 12h6M8.5 15.5h6"/></svg>
+          </div>
+        </div>
+        <div class="stat-label">Upper Grades</div>
+       
+      </div>
+
+    </section>
+    <!-- Filter chips -->
+    <div class="filter-bar">
+      <button class="chip active">All Students</button>
+      <button class="chip">Grade 9</button>
+      <button class="chip">Grade 10</button>
+      <button class="chip">null</button>
+      <button class="chip">null 12</button>
+      <button class="chip">Active Case</button>
+      <span class="chip-spacer"></span>
+      <span class="result-count">Showing 16 of 642</span>
+    </div>
+
+    <!-- Roster table -->
+    <div class="roster-panel">
+      <table class="roster">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Grade</th>
+            <th>Homeroom</th>
+            <th>Assigned Counselor</th>
+            <th>Case Status</th>
+            <th>Last Session</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#54707C;">AO</div>
+                <div class="meta"><div class="sname">Amara Owusu</div><div class="sid">ID 20391</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">10</span></td>
+            <td data-label="Homeroom">10-B</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-monitoring">Monitoring</span></td>
+            <td data-label="Last Session">Oct 8</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#8C6DA8;">DR</div>
+                <div class="meta"><div class="sname">Diego Ramirez</div><div class="sid">ID 20455</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">11</span></td>
+            <td data-label="Homeroom">11-A</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-active">Active</span></td>
+            <td data-label="Last Session">Oct 8</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#C79A44;">PN</div>
+                <div class="meta"><div class="sname">Priya Nair</div><div class="sid">ID 20112</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">12</span></td>
+            <td data-label="Homeroom">12-C</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-closed">Closed</span></td>
+            <td data-label="Last Session">Oct 6</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#3E5A4C;">JK</div>
+                <div class="meta"><div class="sname">Jonah Kim</div><div class="sid">ID 20678</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">9</span></td>
+            <td data-label="Homeroom">9-D</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-active">Active</span></td>
+            <td data-label="Last Session">Oct 7</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#B0644B;">LH</div>
+                <div class="meta"><div class="sname">Leila Haddad</div><div class="sid">ID 20234</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">10</span></td>
+            <td data-label="Homeroom">10-A</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-none">None</span></td>
+            <td data-label="Last Session">—</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#54707C;">MT</div>
+                <div class="meta"><div class="sname">Marcus Thompson</div><div class="sid">ID 20890</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">11</span></td>
+            <td data-label="Homeroom">11-B</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-active">Active</span></td>
+            <td data-label="Last Session">Oct 5</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#8C6DA8;">YH</div>
+                <div class="meta"><div class="sname">Yuki Hayashi</div><div class="sid">ID 20501</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">12</span></td>
+            <td data-label="Homeroom">12-A</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-monitoring">Monitoring</span></td>
+            <td data-label="Last Session">Oct 4</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#C79A44;">SB</div>
+                <div class="meta"><div class="sname">Sena Bekele</div><div class="sid">ID 20345</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">10</span></td>
+            <td data-label="Homeroom">10-C</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-active">Active</span></td>
+            <td data-label="Last Session">Oct 6</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#3E5A4C;">NF</div>
+                <div class="meta"><div class="sname">Noah Fitzgerald</div><div class="sid">ID 20729</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">9</span></td>
+            <td data-label="Homeroom">9-A</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-none">None</span></td>
+            <td data-label="Last Session">—</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#B0644B;">CE</div>
+                <div class="meta"><div class="sname">Chidinma Eze</div><div class="sid">ID 20867</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">11</span></td>
+            <td data-label="Homeroom">11-C</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-closed">Closed</span></td>
+            <td data-label="Last Session">Sep 29</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#54707C;">EP</div>
+                <div class="meta"><div class="sname">Elena Petrov</div><div class="sid">ID 20156</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">12</span></td>
+            <td data-label="Homeroom">12-B</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-active">Active</span></td>
+            <td data-label="Last Session">Oct 9</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#8C6DA8;">TA</div>
+                <div class="meta"><div class="sname">Tariq Aziz</div><div class="sid">ID 20602</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">10</span></td>
+            <td data-label="Homeroom">10-D</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-monitoring">Monitoring</span></td>
+            <td data-label="Last Session">Oct 3</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#C79A44;">GM</div>
+                <div class="meta"><div class="sname">Grace Mwangi</div><div class="sid">ID 20981</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">9</span></td>
+            <td data-label="Homeroom">9-B</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-none">None</span></td>
+            <td data-label="Last Session">—</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#3E5A4C;">LS</div>
+                <div class="meta"><div class="sname">Lucas Silva</div><div class="sid">ID 20423</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">11</span></td>
+            <td data-label="Homeroom">11-D</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-active">Active</span></td>
+            <td data-label="Last Session">Oct 8</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#B0644B;">FR</div>
+                <div class="meta"><div class="sname">Fatima Rahman</div><div class="sid">ID 20744</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">12</span></td>
+            <td data-label="Homeroom">12-D</td>
+            <td data-label="Counselor">M. Tallent</td>
+            <td data-label="Status"><span class="status-dot status-closed">Closed</span></td>
+            <td data-label="Last Session">Sep 25</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+          <tr>
+            <td data-label="Student">
+              <div class="student-cell">
+                <div class="student-avatar" style="background:#54707C;">OB</div>
+                <div class="meta"><div class="sname">Oliver Bennett</div><div class="sid">ID 20288</div></div>
+              </div>
+            </td>
+            <td data-label="Grade"><span class="grade-pill">9</span></td>
+            <td data-label="Homeroom">9-C</td>
+            <td data-label="Counselor">R. Achebe</td>
+            <td data-label="Status"><span class="status-dot status-none">None</span></td>
+            <td data-label="Last Session">—</td>
+            <td><button class="row-action" aria-label="Open student"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div class="roster-footer">
+        <span>Showing 16 of 642 students</span>
+        <div class="pager">
+          <button aria-label="Previous page">‹</button>
+          <button class="active">1</button>
+          <button>2</button>
+          <button>3</button>
+          <button aria-label="Next page">›</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>
